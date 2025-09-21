@@ -1,59 +1,35 @@
-# Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.5.
+# ComparteTuTiempo
 
-## Development server
+> [!WARNING]
+> Este repositorio existe exclusivamente para realizar un análisis con SonarQube de la calidad del código producido para el _frontend_ de ComparteTuTiempo. Para contribuir al proyecto o consultar el código completo de la aplicación, visitar el repositorio del [proyecto original](https://github.com/maryycarrera/ComparteTuTiempo).
 
-To start a local development server, run:
+![Angular](https://img.shields.io/badge/Angular-20.1.5-red?logo=angular)
+![Node.js](https://img.shields.io/badge/Node.js-22.18.0-brightgreen?logo=node.js)
+![Último commit](https://img.shields.io/github/last-commit/maryycarrera/ComparteTuTiempo-frontend)
+![Tamaño del repo](https://img.shields.io/github/repo-size/maryycarrera/ComparteTuTiempo-frontend)
+![Estado de CI](https://img.shields.io/github/actions/workflow/status/maryycarrera/ComparteTuTiempo-frontend/commits.yml?branch=main)
+![Release](https://img.shields.io/github/v/release/maryycarrera/ComparteTuTiempo-frontend)
 
-```bash
-ng serve
-```
+## Índice
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- [Qué es ComparteTuTiempo](#qué-es-compartetutiempo)
+- [Contribuciones](#contribuciones)
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Qué es ComparteTuTiempo
 
-```bash
-ng generate component component-name
-```
+ComparteTuTiempo es una aplicación web de Banco de Tiempo desarrollada como Trabajo de Fin de Grado de Ingeniería del Software en la Universidad de Sevilla. Está pensada como una aplicación desarrollada para un banco de tiempo genérico; es decir, no es un proyecto solicitado por ningún banco de tiempo real.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## Contribuciones
 
-## Building
+Gracias a nuestros contribuidores:
 
-To build the project run:
+<a href="https://github.com/maryycarrera/ComparteTuTiempo-frontend/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=maryycarrera/ComparteTuTiempo-frontend" />
+</a>
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
