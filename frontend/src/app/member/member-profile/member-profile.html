@@ -1,0 +1,127 @@
+<!-- Plantilla generada con GitHub Copilot Chat Extension, modificada posteriormente -->
+<div class="main-title-container">
+    <p class="main-title">Mi Perfil</p>
+</div>
+
+<app-messages-container [errorMessage]="errorMessage" [successMessage]="successMessage"></app-messages-container>
+
+<div class="profile-card">
+    <div class="profile-row">
+        <div class="profile-left">
+            @if (!isEditingPicture) {
+                <div class="profile-pic d-flex flex-column align-items-center">
+                    <img [src]="profilePicture" alt="Foto de perfil" width="200" height="200" />
+                    @if (!editMode) {
+                        <button type="button" class="btn btn-tertiary btn-sm mt-3" (click)="isEditingPicture = true">Cambiar foto de perfil</button>
+                    }
+                </div>
+            } @else {
+                <div class="profile-pic d-flex flex-column align-items-center">
+                    <select class="form-select mt-3 mb-2 w-auto" [(ngModel)]="selectedColor">
+                        <option value="" disabled selected>Selecciona un color</option>
+                        @for (color of colorOptions; track color.value) {
+                        <option [value]="color.value">{{ color.label }}</option>
+                        }
+                    </select>
+                    <div class="d-flex gap-2 mt-2">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="cancelProfilePictureEdit()">Cancelar</button>
+                        <button type="button" class="btn btn-success btn-sm" (click)="saveProfilePicture()" [disabled]="!selectedColor">Guardar</button>
+                    </div>
+                </div>
+            }
+            <div class="profile-username">
+                <p class="profile-username-value">{{ currentMember?.username }}</p>
+                <p class="profile-date">Te uniste el {{ dateOfMembership }}</p>
+            </div>
+        </div>
+        <div class="profile-right">
+            <div class="profile-time">
+                <div class="profile-hours">
+                    <span class="profile-hours-value">{{ hours }}</span>
+                    <span class="profile-hours-label">Horas</span>
+                </div>
+                <div class="profile-minutes">
+                    <span class="profile-minutes-value">{{ minutes }}</span>
+                    <span class="profile-minutes-label">Minutos</span>
+                </div>
+            </div>
+            <div class="profile-main-data">
+                @if (!editMode) {
+                    <p class="profile-name">{{ currentMember?.name }} {{ currentMember?.lastName }}</p>
+                    <p class="profile-email"><b>{{ email }}</b></p>
+                    <p class="profile-bio">{{ currentMember?.biography }}</p>
+                } @else {
+                    <p class="profile-email"><b>{{ email }}</b></p>
+                    <form [formGroup]="profileForm">
+                        <div class="mb-3 admin-info-field">
+                            <label for="name" class="form-label">Nombre</label>
+                            <textarea class="form-control" id="name" formControlName="name" rows="2"></textarea>
+
+                            @if (name.invalid && (name.dirty || name.touched)) {
+                                <div class="text-danger">
+                                    @if (name.hasError('required')) {
+                                        <div>
+                                            El Nombre es obligatorio.
+                                        </div>
+                                    }
+                                    @if (name.hasError('minlength') || name.hasError('maxlength')) {
+                                        <div>
+                                            El Nombre debe tener entre 3 y 100 caracteres.
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                        <div class="mb-3 admin-info-field">
+                            <label for="lastName" class="form-label">Apellido/s</label>
+                            <textarea class="form-control" id="lastName" formControlName="lastName" rows="2"></textarea>
+
+                            @if (lastName.invalid && (lastName.dirty || lastName.touched)) {
+                                <div class="text-danger">
+                                    @if (lastName.hasError('required')) {
+                                        <div>
+                                            El Apellido/s es obligatorio.
+                                        </div>
+                                    }
+                                    @if (lastName.hasError('minlength') || lastName.hasError('maxlength')) {
+                                        <div>
+                                            El Apellido/s debe tener entre 3 y 100 caracteres.
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                        <div class="mb-3 admin-info-field">
+                            <label for="biography" class="form-label">Biografía</label>
+                            <textarea class="form-control" id="biography" formControlName="biography" rows="4"></textarea>
+
+                            @if (biography.invalid && (biography.dirty || biography.touched)) {
+                                <div class="text-danger">
+                                    @if (biography.hasError('maxlength')) {
+                                        <div>
+                                            La Biografía no puede exceder los 500 caracteres.
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (!isEditingPicture) {
+    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 mt-3 mb-2">
+        @if (editMode) {
+            <button type="button" (click)="cancel()" class="btn btn-danger">Cancelar</button>
+            <button type="button" (click)="save()" class="btn btn-success" [disabled]="profileForm.invalid">Guardar cambios</button>
+        } @else {
+            <app-logout></app-logout>
+            <div class="d-flex justify-content-center">
+                <button type="button" (click)="edit()" class="btn btn-primary">Editar perfil</button>
+            </div>
+        }
+    </div>
+}

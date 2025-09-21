@@ -1,0 +1,171 @@
+<form [formGroup]="form">
+    <app-messages-container [errorMessage]="errorMsg"></app-messages-container>
+
+    <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+
+        @if (name.invalid && (name.dirty || name.touched)) {
+            <div class="text-danger">
+                @if (name.hasError('required')) {
+                    <div>
+                        El Nombre es obligatorio.
+                    </div>
+                }
+                @if (name.hasError('minlength') || name.hasError('maxlength')) {
+                    <div>
+                        El Nombre debe tener entre 3 y 100 caracteres.
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label for="lastName" class="form-label">Apellido/s</label>
+        <input type="text" class="form-control" id="lastName" formControlName="lastName">
+
+        @if (lastName.invalid && (lastName.dirty || lastName.touched)) {
+            <div class="text-danger">
+                @if (lastName.hasError('required')) {
+                    <div>
+                        El Apellido/s es obligatorio.
+                    </div>
+                }
+                @if (lastName.hasError('minlength') || lastName.hasError('maxlength')) {
+                    <div>
+                        El Apellido/s debe tener entre 3 y 100 caracteres.
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label for="username" class="form-label">Nombre de usuario</label>
+        <input type="text" class="form-control" id="username" formControlName="username">
+
+        @if (username.invalid && (username.dirty || username.touched)) {
+            <div class="text-danger">
+                @if (username.hasError('required')) {
+                    <div>
+                        El Nombre de usuario es obligatorio.
+                    </div>
+                }
+                @if (username.hasError('pattern')) {
+                    <div>
+                        El Nombre de usuario debe contener sólo letras minúsculas (excluyendo 'ñ' y 'ç'), números, puntos y guiones bajos. Cualquier otro carácter no está permitido.
+                    </div>
+                }
+                @if (username.hasError('minlength') || username.hasError('maxlength')) {
+                    <div>
+                        El Nombre de usuario debe tener entre 5 y 15 caracteres.
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">Correo electrónico</label>
+        <input type="email" class="form-control" id="email" formControlName="email">
+
+        @if (email.invalid && (email.dirty || email.touched)) {
+            <div class="text-danger">
+                @if (email.hasError('required')) {
+                    <div>
+                        El Correo electrónico es obligatorio.
+                    </div>
+                }
+                @if (email.hasError('email')) {
+                    <div>
+                        El formato del Correo electrónico es inválido.
+                    </div>
+                }
+                @if (email.hasError('maxlength')) {
+                    <div>
+                        El Correo electrónico debe tener 255 caracteres como máximo.
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <div class="input-group">
+            <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password" formControlName="password">
+            <span class="input-group-text bg-white border-start-0" style="cursor:pointer;" (click)="togglePasswordVisibility()">
+                @if (showPassword) {
+                    <i class="bi bi-eye-slash"></i>
+                } @else {
+                    <i class="bi bi-eye"></i>
+                }
+            </span>
+        </div>
+
+        @if (password.invalid && (password.dirty || password.touched)) {
+            <div class="text-danger">
+                @if (password.hasError('required')) {
+                    <div>
+                        La Contraseña es obligatoria.
+                    </div>
+                }
+                @if (password.hasError('minlength') || password.hasError('maxlength')) {
+                    <div>
+                        La Contraseña debe tener entre 8 y 12 caracteres.
+                    </div>
+                }
+                @if (password.hasError('pattern')) {
+                    <div>
+                        La contraseña debe contener al menos una minúscula, una mayúscula, un número y un símbolo. No puede contener espacios.
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+        <div class="input-group">
+            <input [type]="showConfirmPassword ? 'text' : 'password'" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+            <span class="input-group-text bg-white border-start-0" style="cursor:pointer;" (click)="toggleConfirmPasswordVisibility()">
+                @if (showConfirmPassword) {
+                    <i class="bi bi-eye-slash"></i>
+                } @else {
+                    <i class="bi bi-eye"></i>
+                }
+            </span>
+        </div>
+
+        @if (confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)) {
+            <div class="text-danger">
+                @if (confirmPassword.hasError('required')) {
+                    <div>
+                        La Confirmación de Contraseña es obligatoria.
+                    </div>
+                }
+                @if (confirmPassword.hasError('minlength') || confirmPassword.hasError('maxlength')) {
+                    <div>
+                        La Confirmación de Contraseña debe tener entre 8 y 12 caracteres.
+                    </div>
+                }
+                @if (confirmPassword.hasError('pattern')) {
+                    <div>
+                        La contraseña debe contener al menos una minúscula, una mayúscula, un número y un símbolo. No puede contener espacios.
+                    </div>
+                }
+            </div>
+        }
+        @if (confirmPassword.valid && (confirmPassword.dirty || confirmPassword.touched)) {
+            @if (form.hasError('passwordsMismatch')) {
+                <div class="text-danger">
+                    Las contraseñas no coinciden.
+                </div>
+            }
+        }
+    </div>
+    <button type="submit" (click)="create()" class="btn btn-primary" [disabled]="form.invalid">
+      {{ buttonText }}
+    </button>
+</form>

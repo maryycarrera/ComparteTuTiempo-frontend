@@ -1,0 +1,8 @@
+<div class="success-message-container">
+    @if (errorMessage) {
+        <div class="alert alert-danger mb-4">{{ errorMessage }}</div>
+    }
+    @if (successMessage) {
+        <div class="alert alert-success mb-4">{{ successMessage }}</div>
+    }
+</div>

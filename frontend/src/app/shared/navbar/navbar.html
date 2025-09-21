@@ -1,0 +1,7 @@
+@if (!userIsLoggedIn) {
+  <app-loggedout-navbar></app-loggedout-navbar>
+} @else if (userIsAdmin) {
+  <app-admin-navbar></app-admin-navbar>
+} @else {
+  <app-member-navbar></app-member-navbar>
+}

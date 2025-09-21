@@ -1,0 +1,58 @@
+<!-- START Generado con GitHub Copilot Chat Extension -->
+<div class="container mt-4" style="max-width: 1100px;">
+    <div class="row align-items-center mb-3">
+        <div class="col-3"></div>
+        <div class="col-6 text-center">
+            <p class="main-title mb-0">Miembros</p>
+        </div>
+        <div class="col-3 d-flex justify-content-end">
+            <form class="d-flex" style="max-width: 350px;" (submit)="onSearchSubmit($event)">
+                <input type="text" class="form-control search-input" placeholder="Buscar" [(ngModel)]="searchText" name="searchText" />
+                @if (searchText && searchText.length > 0) {
+                    <button type="button" class="btn btn-outline-secondary ms-2" title="Borrar búsqueda" (click)="searchText=''; filterMembers();">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                }
+                <button type="submit" class="btn btn-outline-secondary ms-2" title="Buscar">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <app-messages-container [errorMessage]="errorMessage" [successMessage]="successMessage"></app-messages-container>
+        @if (filteredMembers && filteredMembers.length > 0) {
+            <div>
+                <div class="row fw-bold mb-2 list-header">
+                    <div class="col text-center">Nombre completo</div>
+                    <div class="col text-center">Nombre de usuario</div>
+                    @if ('email' in filteredMembers[0]) {
+                        <div class="col text-center">Correo electrónico</div>
+                    }
+                    <div class="col text-center">Fecha de alta</div>
+                    <div class="col text-center">Tiempo</div>
+                    <div class="col text-center">Acciones</div>
+                </div>
+                @for (member of filteredMembers; track member.id) {
+                    <div class="row mb-2 align-items-center">
+                        <div class="col text-center">{{ member.fullName }}</div>
+                        <div class="col text-center">{{ member.username }}</div>
+                        @if ('email' in member) {
+                            <div class="col text-center">{{ member.email }}</div>
+                        }
+                        <div class="col text-center">{{ member.dateOfMembership }}</div>
+                        <div class="col text-center">{{ member.timeBalance }}</div>
+                        <div class="col text-center">
+                            <app-base-icon-button bttnType="details" (clicked)="viewMemberDetails(member.id)" class="me-1"></app-base-icon-button>
+                            @if ('email' in member) {
+                                <app-base-icon-button bttnType="delete" (clicked)="deleteMember(member.id)"></app-base-icon-button>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+<!-- END Generado con GitHub Copilot Chat Extension -->

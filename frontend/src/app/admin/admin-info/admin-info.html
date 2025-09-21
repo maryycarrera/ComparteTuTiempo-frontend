@@ -1,0 +1,33 @@
+<div class="main-title-container">
+    <p class="main-title">{{ fullName }}</p>
+</div>
+
+<app-messages-container [errorMessage]="errorMessage" [successMessage]="successMessage"></app-messages-container>
+
+@if (admin) {
+    <div class="profile-container">
+        <div class="profile-pic">
+            <img [src]="profilePicture" alt="Foto de perfil" width="200" height="200" />
+        </div>
+        <div class="profile-data">
+            <form [formGroup]="infoForm">
+                <div class="mb-3 admin-info-field">
+                    <label for="username" class="form-label">Nombre de usuario</label>
+                    <input type="text" class="form-control" id="username" formControlName="username">
+                </div>
+                <div class="mb-3 admin-info-field">
+                    <label for="name" class="form-label">Nombre</label>
+                    <textarea class="form-control" id="name" formControlName="name" rows="2"></textarea>
+                </div>
+                <div class="mb-3 admin-info-field">
+                    <label for="lastName" class="form-label">Apellido/s</label>
+                    <textarea class="form-control" id="lastName" formControlName="lastName" rows="2"></textarea>
+                </div>
+                <div class="mb-3 admin-info-field">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" id="email" formControlName="email">
+                </div>
+            </form>
+        </div>
+    </div>
+}

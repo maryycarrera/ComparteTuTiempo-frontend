@@ -1,0 +1,63 @@
+<div class="main-title-container">
+    <p class="main-title">Iniciar Sesión</p>
+</div>
+<form [formGroup]="loginForm">
+    <app-messages-container [errorMessage]="loginError" [successMessage]="loginSuccess"></app-messages-container>
+    <div class="mb-3">
+        <label for="username" class="form-label">Nombre de usuario</label>
+        <input type="text" class="form-control" id="username" formControlName="username">
+
+        @if (username.invalid && (username.dirty || username.touched)) {
+            <div class="text-danger">
+                @if (username.hasError('required')) {
+                    <div>
+                        El Nombre de usuario es obligatorio.
+                    </div>
+                }
+                @if (username.hasError('pattern')) {
+                    <div>
+                        El Nombre de usuario debe contener sólo letras minúsculas (excluyendo 'ñ' y 'ç'), números, puntos y guiones bajos. Cualquier otro carácter no está permitido.
+                    </div>
+                }
+                @if (username.hasError('minlength') || username.hasError('maxlength')) {
+                    <div>
+                        El Nombre de usuario debe tener entre 5 y 15 caracteres.
+                    </div>
+                }
+            </div>
+        }
+
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <!-- START Generado con GitHub Copilot Chat Extension -->
+        <div class="input-group">
+            <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password" formControlName="password">
+            <span class="input-group-text bg-white border-start-0" style="cursor:pointer;" (click)="togglePasswordVisibility()">
+                @if (showPassword) {
+                    <i class="bi bi-eye-slash"></i>
+                } @else {
+                    <i class="bi bi-eye"></i>
+                }
+            </span>
+        </div>
+        <!-- END Generado con GitHub Copilot Chat Extension -->
+
+        @if (password.invalid && (password.dirty || password.touched)) {
+            <div class="text-danger">
+                @if (password.hasError('required')) {
+                    <div>
+                        La Contraseña es obligatoria.
+                    </div>
+                }
+                @if (password.hasError('minlength') || password.hasError('maxlength')) {
+                    <div>
+                        La Contraseña debe tener entre 8 y 12 caracteres.
+                    </div>
+                }
+            </div>
+        }
+
+    </div>
+    <button type="submit" (click)="login()" class="btn btn-primary" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+</form>

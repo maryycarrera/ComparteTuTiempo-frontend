@@ -1,0 +1,38 @@
+<div class="main-title-container">
+    <p class="main-title">{{ member?.fullName}}</p>
+</div>
+
+<app-messages-container [errorMessage]="errorMessage"></app-messages-container>
+
+<div class="profile-card">
+    <div class="profile-row">
+        <div class="profile-left">
+            <div class="profile-pic">
+                <img [src]="profilePicture" alt="Foto de perfil" width="200" height="200" />
+            </div>
+            <div class="profile-username">
+                <p class="profile-username-value">{{ member?.username }}</p>
+                <p class="profile-date">Se unió el {{ member?.dateOfMembership }}</p>
+            </div>
+        </div>
+        <div class="profile-right">
+            <div class="profile-time">
+                <div class="profile-hours">
+                    <span class="profile-hours-value">{{ member?.hours }}</span>
+                    <span class="profile-hours-label">Horas</span>
+                </div>
+                <div class="profile-minutes">
+                    <span class="profile-minutes-value">{{ member?.minutes }}</span>
+                    <span class="profile-minutes-label">Minutos</span>
+                </div>
+            </div>
+            <div class="profile-main-data">
+                <p class="profile-name">{{ member?.fullName }}</p>
+                @if (memberEmail) {
+                    <p class="profile-email"><b>{{ memberEmail }}</b></p>
+                }
+                <p class="profile-bio">{{ member?.biography }}</p>
+            </div>
+        </div>
+    </div>
+</div>

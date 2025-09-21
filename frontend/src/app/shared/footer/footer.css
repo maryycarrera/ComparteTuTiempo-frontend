@@ -1,0 +1,9 @@
+footer .footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 20px;
+    min-height: 150px;
+}

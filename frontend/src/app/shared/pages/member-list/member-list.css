@@ -1,0 +1,6 @@
+.search-input.ng-valid.ng-touched {
+  border-left: none !important;
+}
+.search-input.ng-invalid.ng-touched {
+  border-left: none !important;
+}

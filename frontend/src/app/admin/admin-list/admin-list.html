@@ -1,0 +1,40 @@
+<div class="container mt-4" style="max-width: 1000px;">
+    <div class="row align-items-center mb-3">
+        <div class="col-3"></div>
+        <div class="col-6 text-center">
+            <p class="main-title mb-0">Administradores</p>
+        </div>
+        <div class="col-3 d-flex justify-content-end">
+            <button type="button" (click)="create()" class="btn btn-primary">Nuevo administrador</button>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <app-messages-container [errorMessage]="errorMessage" [successMessage]="successMessage"></app-messages-container>
+        @if (admins && admins.length > 0) {
+            <div>
+                <div class="row fw-bold mb-2 list-header">
+                    <div class="col text-center">Nombre completo</div>
+                    <div class="col text-center">Nombre de usuario</div>
+                    <div class="col text-center">Correo electrónico</div>
+                    <div class="col text-center">Acciones</div>
+                </div>
+                @for (admin of admins; track admin.id) {
+                    <div class="row mb-2 align-items-center">
+                        <div class="col text-center">{{ admin.fullName }}</div>
+                        <div class="col text-center">{{ admin.username }}</div>
+                        <div class="col text-center">{{ admin.email }}</div>
+                        <div class="col text-center">
+                            @if(!isCurrentUserThisAdminId(admin.id)) {
+                                <app-base-icon-button bttnType="details" (clicked)="viewAdminDetails(admin.id)" class="me-1"></app-base-icon-button>
+                                <app-base-icon-button bttnType="delete" (clicked)="deleteAdmin(admin.id)"></app-base-icon-button>
+                            } @else {
+                                <div>(Eres tú)</div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

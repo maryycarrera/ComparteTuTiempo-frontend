@@ -1,0 +1,273 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+:root {
+  --color-lila-claro: #d8b2ee;
+  --color-lila-suave: #f3e6fa;
+  --color-morado-medio: #a259e6;
+  --color-morado-oscuro: #6c3483;
+  --color-lila-pastel: #e9d6f7;
+  --color-morado-intenso: #7c3aed;
+  --color-rosa-pastel: #f8c6d8;
+  --color-rosa-oscuro: #d14f83;
+  --color-crema: #eed1c6;
+  --color-crema-oscuro: #e0b899;
+  --color-lavanda: #e6e6fa;
+
+  --color-verde-correcto: #42A948;
+  --color-rojo-incorrecto: #a94442;
+  --color-amarillo-advertencia: #f6eb61;
+
+  --color-sombras: rgba(0,0,0,0.05);
+  --color-texto-destacado: #222;
+  --color-texto-importante: #333;
+  --color-texto-secundario: #444;
+  --color-texto-terciario: #555;
+  --color-texto-ayuda: #666;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100vh;
+}
+
+
+main.content {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+app-footer {
+  margin-top: auto;
+}
+
+.ng-valid:not(form).ng-touched   {
+  border-left: 5px solid var(--color-verde-correcto);
+}
+ 
+.ng-invalid:not(form).ng-touched  {
+  border-left: 5px solid var(--color-rojo-incorrecto);
+}
+
+.navbar, footer {
+  background-color: var(--color-lila-claro) !important;
+}
+
+.btn-primary {
+  background-color: var(--color-morado-medio);
+  border-color: var(--color-morado-medio);
+  color: white;
+}
+
+.btn-primary:disabled,
+.btn-primary[disabled] {
+  background-color: var(--color-morado-medio) !important;
+  border-color: var(--color-morado-medio) !important;
+  color: white !important;
+  cursor: not-allowed !important;
+  opacity: 0.5;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-morado-intenso);
+  border-color: var(--color-morado-intenso);
+}
+
+.btn-secondary {
+  background-color: var(--color-lila-pastel);
+  border-color: var(--color-lila-pastel);
+  color: var(--color-morado-intenso);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-lila-claro);
+  border-color: var(--color-lila-claro);
+  color: var(--color-morado-oscuro);
+}
+
+.btn-tertiary {
+  background-color: var(--color-crema);
+  border-color: var(--color-crema);
+  color: var(--color-morado-oscuro);
+}
+
+.btn-tertiary:hover {
+  background-color: var(--color-crema-oscuro);
+  border-color: var(--color-crema-oscuro);
+  color: black;
+}
+
+.card, .bg-secondary {
+  background-color: var(--color-lila-pastel);
+}
+
+.text-important {
+  color: var(--color-morado-oscuro);
+}
+
+.main-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+.main-title-container {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 0;
+  width: 80vw;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+  margin: 10px auto;
+  align-self: center;
+}
+
+.success-message-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 10px auto;
+  align-self: center;
+}
+
+/* START Generado con GitHub Copilot Chat Extension */
+.profile-pic img {
+	border-radius: 50%;
+	background: lightgray;
+	border: 2px solid var(--color-texto-destacado);
+}
+
+.profile-card {
+	background: var(--color-lavanda);
+	border: 2px dashed var(--color-morado-medio);
+	border-radius: 2rem;
+	max-width: 700px;
+	margin: 2rem auto;
+	padding: 2rem 2rem 1.5rem 2rem;
+	box-shadow: 0 2px 8px var(--color-sombras);
+}
+
+.profile-time {
+	display: flex;
+	flex-direction: row;
+	gap: 2.5rem;
+	margin-bottom: 1.2rem;
+	justify-content: flex-start;
+}
+
+.profile-hours, .profile-minutes {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-width: 80px;
+}
+.profile-hours-value, .profile-minutes-value {
+	font-size: 2.5rem;
+	font-weight: bold;
+}
+.profile-hours-label, .profile-minutes-label {
+	font-size: 1.1rem;
+	color: var(--color-texto-importante);
+}
+
+.profile-row {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 3rem;
+}
+
+.profile-left {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	min-width: 220px;
+}
+
+.profile-right {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	flex: 1;
+}
+
+.profile-main-data {
+	text-align: left;
+	margin-bottom: 1.2rem;
+}
+.profile-name {
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin-bottom: 0.2rem;
+}
+.profile-email {
+	font-size: 1rem;
+	color: var(--color-texto-secundario);
+	margin-bottom: 0.2rem;
+}
+.profile-bio {
+	font-size: 1rem;
+	color: var(--color-texto-destacado);
+	margin-bottom: 0.2rem;
+}
+.profile-username {
+	text-align: center;
+	margin-top: 0.5rem;
+}
+.profile-username-value {
+	font-size: 1.2rem;
+	font-weight: bold;
+	margin-bottom: 0.1rem;
+}
+.profile-date {
+	font-size: 1rem;
+	color: var(--color-texto-ayuda);
+}
+
+.list-header {
+  background-color: var(--color-rosa-pastel);
+  border-radius: 1rem;
+}
+
+.admin-info-field {
+    min-width: 400px;
+    max-width: 700px;
+    width: 100%;
+}
+
+/* Ocultar visualizador de contraseñas */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear,
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-input-decoration,
+input[type="password"]::-webkit-input-clear-button,
+input[type="password"]::-webkit-input-password-reveal-button {
+  display: none !important;
+}
+/* END Generado con GitHub Copilot Chat Extension */

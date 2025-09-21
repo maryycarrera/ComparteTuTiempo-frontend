@@ -1,0 +1,17 @@
+.profile-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2rem;
+}
+
+.profile-pic {
+	margin-right: 3rem;
+}
+
+.profile-data {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

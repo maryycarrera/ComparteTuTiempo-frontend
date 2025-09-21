@@ -1,0 +1,24 @@
+<div class="main-title-container">
+    <p class="main-title">Fondo Solidario</p>
+</div>
+
+<app-messages-container [errorMessage]="errorMessage"></app-messages-container>
+
+<div class="profile-card">
+    <p>Actualmente el Fondo Solidario cuenta con...</p>
+    <div class="profile-time d-flex justify-content-center align-items-center gap-5">
+        <div class="profile-hours text-center">
+            <div class="profile-hours-value">{{ hours }}</div>
+            <div class="profile-hours-label">Horas</div>
+        </div>
+        <div class="profile-minutes text-center">
+            <div class="profile-minutes-value">{{ minutes }}</div>
+            <div class="profile-minutes-label">Minutos</div>
+        </div>
+    </div>
+    @if (userIsAdmin) {
+      <app-admin-solidarity-fund></app-admin-solidarity-fund>
+    } @else {
+      <app-member-solidarity-fund></app-member-solidarity-fund>
+    }
+</div>
